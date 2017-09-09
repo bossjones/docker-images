@@ -3,7 +3,7 @@ MAINTAINER Malcolm Jones <bossjones@theblacktonystark.com>
 
 ENV container docker
 
-RUN dnf -y swap -- remove systemd-container systemd-container-libs -- install systemd systemd-libs
+RUN dnf -y install --best --allowerasing systemd systemd-libs
 
 RUN dnf -y update; dnf clean all; \
 (cd /lib/systemd/system/sysinit.target.wants/; for i in *; do [ $i == systemd-tmpfiles-setup.service ] || rm -f $i; done); \
